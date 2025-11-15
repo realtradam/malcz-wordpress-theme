@@ -1,0 +1,139 @@
+
+
+:root {
+  --heading-height: 15em;
+}
+header {
+  position: fixed;
+  width: 100%;
+  height: var(--heading-height);
+}
+
+/* Light color scheme (Default) */
+[data-theme="light"],
+:root:not([data-theme="dark"]) {
+  --header-border-color: black;  /* Light mode border color */
+  --header-border-thickness: 0.3em; /* Light mode thickness */
+}
+
+/* Dark color scheme (Auto) */
+@media only screen and (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --header-border-color: white;  /* Dark mode border color */
+    --header-border-thickness: 0.2em; /* Dark mode thickness */
+  }
+}
+
+/* Dark color scheme (Forced) */
+[data-theme="dark"] {
+  --header-border-color: white;
+  --header-border-thickness: 0.2em;
+}
+
+/* Header styling */
+header::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: 6em;
+  width: 100%;
+  height: calc(var(--heading-height) + 10em);
+  z-index: -1;
+  transform: skewY(-3.5deg);
+  background: 
+    linear-gradient(225deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.65) 100%),
+    var(--banner-url) no-repeat center var(--scroll-percent);
+  background-size: cover;
+  border-bottom: var(--header-border-thickness) solid var(--header-border-color);
+}
+
+
+
+h1 {
+  font-size: calc(0.8em + 2.6vw);
+  font-weight: 700;
+  letter-spacing: .01em;
+  text-shadow: .022em .022em .022em #111;
+  color: #fff;
+}
+
+
+body {
+    min-height: 100vh;
+}
+
+body > main {
+  padding: var(--heading-height) 4em 0;
+}
+
+.site-title {
+  margin: 0;
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  padding: 0;
+  margin: 0;
+}
+
+.header-aside {
+  margin-left: auto;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.theme-dropdown summary {
+  cursor: pointer;
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: top;
+  position: relative;
+
+}
+
+.header-main {
+  display: flex;
+  flex-direction: column;
+}
+
+.main-nav {
+  margin-top: 0.5rem;
+}
+
+.dropdown-menu {
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown summary {
+  border: none;
+}
+
+nav.theme-selector {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.theme-selector details summary {
+  border-width: 2px;
+}
+
+.theme-selector {
+  margin-top: 1em;
+}
+
+@media (max-width: var(--breakpoint-sm)) {
+  .theme-selector {
+    margin-top: 0.5em;
+  }
+}
+
