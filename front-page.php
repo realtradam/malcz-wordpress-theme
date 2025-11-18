@@ -1,7 +1,1 @@
-<?php get_header();?>
-
-	<main class="container">
-	  <h1>Hello world!</h1>
-	</main>
-
-<?php get_footer();?>
+<?php get_template_part('page'); ?>
