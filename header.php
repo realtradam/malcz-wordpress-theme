@@ -22,8 +22,14 @@
 <header class="site-header">
   <div class="header-inner container">
     <div class="header-main">
-    <h1 class="site-title">Adam Malczewski</h1>
-    <div data-theme="dark">
+      <h1 class="site-title" data-theme="dark">
+        <a href="<?php echo home_url(); ?>"
+          class="pico-delinkify"
+          <?php if ( is_front_page() ) : ?>aria-current="page"<?php endif; ?>>
+          Adam <span<?php if ( is_front_page() ) echo ' aria-current="page"'; ?>>Malcz</span>ewski
+        </a>
+      </h1>
+    <div>
     <?php
     wp_nav_menu(
       array(
@@ -32,7 +38,8 @@
         'container_class' => 'main-nav',
         'container_aria_label' => 'Main menu',
         'menu_class' => 'nav-list',
-        'fallback_cb' => false
+        'fallback_cb' => false,
+        'walker' => new Pico_Details_Nav_Walker(),
       )
     );
     ?>

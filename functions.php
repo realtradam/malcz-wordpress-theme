@@ -53,7 +53,7 @@ register_nav_menus(
 
 	array(
 		'top-menu' => 'Top Menu Location',
-		'mobile-menu' => 'Mobile Menu Location'
+		//'mobile-menu' => 'Mobile Menu Location'
 	)
 
 );
@@ -73,3 +73,7 @@ add_filter('nav_menu_link_attributes', function($atts, $item, $args, $depth) {
     return $atts;
 }, 10, 4);
 
+function register_navwalker() {
+    require_once get_template_directory() . '/plugins/class-wp-picocss-navwalker.php';
+}
+add_action('after_setup_theme', 'register_navwalker');

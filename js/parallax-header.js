@@ -13,6 +13,7 @@ document.addEventListener("scroll", () => {
 
 function animate() {
   currentPercent += (targetPercent - currentPercent) * tweenSpeed;
+  currentPercent = Math.max(Math.min(targetMax, currentPercent), targetMin);
   document.documentElement.style.setProperty('--scroll-percent', currentPercent + '%');
   requestAnimationFrame(animate);
 }
