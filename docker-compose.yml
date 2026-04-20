@@ -1,0 +1,11 @@
+services:
+  theme:
+    build: .
+    container_name: malcz_theme_sync
+    restart: unless-stopped
+    volumes:
+      - theme_data:/theme
+
+volumes:
+  theme_data:
+    name: malcz_theme_data
